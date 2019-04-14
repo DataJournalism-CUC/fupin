@@ -21,6 +21,12 @@ const pin = d =>{
 } 
 
 const trans = d3.transition().duration(2000)
+// const lineg = d3.line().x(d =>).y().curve()
+let arrow = 'm0,0L-20,-10,-13,0,-20,10,0,0'
+const trangleg = (l, x, y) => {
+    
+}
+let trangle = 'M0 0 L20 0 L0 20  Z'
 
 async function load() {
     [china, china_topo, line] = await Promise.all([
@@ -31,6 +37,7 @@ async function load() {
     projection.fitSize([width, height], china);
     geoGenerator.projection(projection);
 
+    // console.log(line)
     chart(china, line)
 }
 
@@ -49,7 +56,7 @@ const chart = (china, line) => {
         text = svg.append("g").attr('id', '#text'),
         g_circle = svg.append("g").attr("class", "circles")
 
-    let lid = 12;
+    let lid = 7;
     let defaultd = line.filter(d => d.id == lid);
     infoset(defaultd[0]);
 
@@ -72,6 +79,7 @@ const chart = (china, line) => {
     let lines = g_line.selectAll("path").data(line);
         lines.enter().append("path").attr("class", 'hlines')
             .attr('d', d => lpath(d))
+            // .attr('d', d => linege(d))
             .attr('fill', "none")
             .attr("stroke-width", d => d.id === lid ? 3.5 : 2.5)
             .attr('stroke', d => d.id === lid ? colorpel.hline : colorpel.line)
@@ -88,6 +96,7 @@ const chart = (china, line) => {
 
     d3.selectAll('.hlines')
         .on("mouseover", mouseon_l)
+        // .on('mouseout', mouseout_l)
 
     return svg.node();
 }
@@ -101,6 +110,7 @@ const mouseon_l = (d) => {
         .attr('stroke', d => d.id == lid ? colorpel.hline : colorpel.line)
         .style("opacity", d => d.id == lid ? 1 : 0.5)
     
+    // console.log(aline)
     let spro = d.s_pro,
         tpro = d.t_pro;
 
@@ -137,6 +147,8 @@ const colorline = (d, spro, tpro) => {
 
 const infoset = d => {
     pren = d3.select('#money span').text()
+    // console.log(pren, d.money)
+    // console.log(d)
     if (d.money === 'nan') {$('#money').text()}
     else { 
         d3.select('#money span')
@@ -152,4 +164,7 @@ const infoset = d => {
     $('#target span').text(d.target)
 }
 
+const newline = d => {
+
+}
 load()
