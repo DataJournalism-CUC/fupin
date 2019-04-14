@@ -1,6 +1,4 @@
 var myChart = echarts.init(document.getElementById('pie1'));
-	
-	
 
 
 var option = {
@@ -26,10 +24,7 @@ var option = {
                 normal: {
                     show: true,
 					textStyle:{fontSize:'17',}}
-                    
                 },
-               
-            
 		  
             labelLine: {
                 normal: {
@@ -39,8 +34,7 @@ var option = {
             data:[
                 {value:10, name:'百色市'},
                 {value:7, name:'河池市'},
-                {value:16, name:'其他'},
-                
+                {value:16, name:'其他'}
             ]
         }
     ]
