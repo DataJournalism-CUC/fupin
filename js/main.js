@@ -56,7 +56,7 @@ const chart = (china, line) => {
         text = svg.append("g").attr('id', '#text'),
         g_circle = svg.append("g").attr("class", "circles")
 
-    let lid = 7;
+    let lid = 12;
     let defaultd = line.filter(d => d.id == lid);
     infoset(defaultd[0]);
 
